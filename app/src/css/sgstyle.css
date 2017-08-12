@@ -1,0 +1,52 @@
+.container-fluid h1{
+	font-size: 54px;
+	font-family: Comic Sans MS, Comic Sans, cursive;
+	text-align: center;
+}
+
+.container-fluid img{
+	height: 200px;
+	width: 200px;
+	padding-left: 50px;
+	padding-right: 50px;
+	padding-right: 50px;
+	padding-bottom: 100px;
+}
+
+.container-fluid body{
+	background-color: #A6F5AA;
+}
+
+.container-fluid #submit_btn{
+	height: 60px;
+	width: 200px;
+	font-size: 30px;
+	color: white;
+	background-color: #174E08;
+	font-family: Comic Sans MS, Comic Sans, cursive;
+	border: none;
+	box-shadow: 0 5px #3e8e41;
+	transform: translateY(4px);
+}
+
+.container-fluid h2{ 
+	text-align: center;
+	font-family: Comic Sans MS, Comic Sans, cursive;
+}	
+
+.container-fluid #name{
+	width: 350px;
+	height: 30px;
+}
+
+.container-fluid #submitbtn{
+	height: 30px;
+	width: 100px;
+	color: white;
+	background-color: #174E08;
+	font-family: Comic Sans MS, Comic Sans, cursive;
+	font-size: 20px;
+	border: none;
+	box-shadow: 0 5px #3e8e41;
+	transform: translateY(4px);
+}

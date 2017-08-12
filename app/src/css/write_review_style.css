@@ -1,0 +1,88 @@
+.green{
+	color: #174E08;
+	display: inline;
+}
+
+.container-fluid h1{
+	font-size: 72px;
+	font-family: Comic Sans MS, Comic Sans, cursive;
+}
+.container-fluid h2,label{
+	font-family: Comic Sans MS, Comic Sans, cursive;
+	font-size: 36px;
+}
+
+#submit_btn{
+	height: 60px;
+	font-size: 30px;
+	color: white;
+	background-color: #174E08;
+	font-family: Comic Sans MS, Comic Sans, cursive;
+	border: none;
+	box-shadow: 0 5px #3e8e41;
+	transform: translateY(4px);
+}
+
+.stars{
+	font-size: 20px;
+	display: inline;
+	float: left;
+}
+
+.rating:not(:checked) > input {
+	position:absolute;
+	top:-9999px;
+	clip:rect(0,0,0,0);
+}
+
+.rating:not(:checked) > label {
+	float:right;
+	width:1em;
+	padding:0 .1em;
+	overflow:hidden;
+	white-space:nowrap;
+	cursor:pointer;
+	font-size:200%;
+	line-height:1.2;
+	color:#ddd;
+	text-shadow:1px 1px #bbb, 2px 2px #666, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating:not(:checked) > label:before {
+	content: '★ ';
+}
+
+.rating > input:checked ~ label {
+	color: #f70;
+	text-shadow:1px 1px #c60, 2px 2px #940, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+	color: gold;
+	text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked + label:hover ~ label,
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
+	color: #ea0;
+	text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating > label:active {
+	position:relative;
+	top:2px;
+	left:2px;
+}
+
+#booki{
+	padding-top: 10px;
+	height: 200px;
+	width: 300px;
+}
+#book_pic{
+	float: right;
+}

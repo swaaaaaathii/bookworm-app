@@ -1,0 +1,38 @@
+<!doctype HTML>
+		<html>
+			<head>
+				<meta charset="utf-8">
+				<meta http-equiv="X-UA-Compatible" content="IE=edge">
+				<meta name="viewport" content="width=device-width, initial-scale=1">
+				<title>Reviews</title>
+				<link rel="stylesheet" type="text/css" href="view_review_style.css"/>
+				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+			</head>
+			<body>
+			<div class="container-fluid">
+			<div class="row">
+			<div class="col-sm-4"></div>
+			<div class="col-sm-4"><h1>${title}</h1></div>
+			<div class="col-sm-4">
+				<a href = "/welcome"><img id="booki" src="http://images.clipartpanda.com/book-worm-clip-art-RTdRnoXxc.png"/></a>
+			</div>
+			</div>
+			<div class="row">
+			<div class="col-sm-4"></div>
+			<div class="col-sm-3"><img id="book_pic" src="http://filestore.c100.hasura.me/v1/file/81694a3c-34bf-4d04-9e85-299e636fe7f7" / ></div>
+			<div class="col-sm-4" align="left">
+			<h2>Author : <div class="green">${author}</div></h2>
+			<h2>Genre : <div class="green">${genre}</div></h2>
+			<h2>Reviews : <div class="green">${revcount}</div></h2>
+			${buttontext}
+			</div>
+			</div>
+			</div>
+			<div id = "reviews">
+			</div>
+			</body>
+			<script>
+				document.getElementById("reviews").innerHTML = '${text}';
+			</script>
+			<script type="text/javascript" src="/js/view_review.js"></script>
+		</html>

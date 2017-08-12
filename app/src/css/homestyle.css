@@ -1,0 +1,32 @@
+body{
+	background-image: url(http://images.clipartpanda.com/book-worm-clip-art-RTdRnoXxc.png);
+	background-repeat: no-repeat;
+	background-size: 60%;
+	background-position: left-bottom;
+	padding: 0;
+	margin: 0;
+}
+
+.container-fluid h1{
+	font-size: 72px;
+	font-family: Comic Sans MS, Comic Sans, cursive;
+}
+.container-fluid h2{
+	font-size: 48px;
+	font-family: Comic Sans MS, Comic Sans, cursive;
+}
+.container-fluid #b1,.container-fluid #b2{
+	font-size: 30px;
+	color: white;
+	background-color: #174E08;
+	font-family: Comic Sans MS, Comic Sans, cursive;
+	border: none;
+	box-shadow: 0 5px #3e8e41;
+	transform: translateY(4px);
+}
+.container-fluid a{
+	text-decoration: none;
+	color: white;
+	font-family: Comic Sans MS, Comic Sans, cursive;
+	font-size: 30px;
+}

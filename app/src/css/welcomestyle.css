@@ -1,0 +1,60 @@
+.container-fluid h1{
+	font-size: 72px;
+	font-family: Comic Sans MS, Comic Sans, cursive;
+	color: #174E08;
+	text-align: center;
+	padding-bottom: 20px;
+	padding-top: 20px;
+	border: 2px solid black;
+	border-radius: 200px;
+}
+
+.container-fluid #booki{
+	height: 200px;
+	width: 300px;
+	float: right;
+	margin-top: 10px;
+}
+
+.container-fluid #logout{
+	height: 60px;
+	font-size: 30px;
+	margin-top: 30px;
+	color: white;
+	background-color: #174E08;
+	font-family: Comic Sans MS, Comic Sans, cursive;
+	border: none;
+	box-shadow: 0 5px #3e8e41;
+	transform: translateY(4px);
+}
+
+.container-fluid h2{
+	font-size: 30px;
+	font-family: Comic Sans MS, Comic Sans, cursive;
+}
+
+.container-fluid #search{
+	width: 300px;
+	height: 30px;
+	font-size: 25px;
+	font-family: Comic Sans MS, Comic Sans, cursive;
+}
+
+#books{
+	overflow-y: auto;
+	overflow-x:hidden;
+	height: 500px;
+	width: 800px;
+	margin-left: 20%;
+}
+
+.books{
+	width: 183px;
+	height: 275px;
+	padding-right: 40px;
+	padding-bottom: 40px;
+}
+
+#search_button{
+	font-size: 20px;
+}
