@@ -428,7 +428,7 @@ app.get('/welcome', function(req, res){
 			"args": {
 				"table": "view_genre",
 				"columns": ["user_name","genre_name","book_name","book_pic"],
-				"where": {"user_id": "113"}
+				"where": {"user_id": id}
 			}
 		}
 		var options = {
