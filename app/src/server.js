@@ -69,6 +69,7 @@ app.post('/register', function (req,res) {
 		 json: true,
 		 body: query
 	   }
+	   console.log(options);
 	request(options, function(error, response, body){
 		 if(error){
 		   console.log(error);
@@ -79,10 +80,13 @@ app.post('/register', function (req,res) {
 		   config.TOKEN = body.auth_token;
 		   res.status(200).send("Successful");
 		 }
+		 console.log(id);
+		 console.log(config.TOKEN);
 	});
 });
 
 app.post('/entername',function(req,res) {
+	console.log(req.body.name);
 	var query = {
 		"type": "insert",
 		"args": {
@@ -102,6 +106,7 @@ app.post('/entername',function(req,res) {
 			},
 		 body: query
 	 }
+	 console.log(options);
 	 request(options, function(error, response, body){
 		 if(error){
 		   console.log(error);
