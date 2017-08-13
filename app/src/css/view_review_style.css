@@ -1,37 +1,37 @@
-container-fluid .green{
+ .green{
 	color: #174E08;
 	display: inline;
 }
 
-container-fluid h1{
+h1{
 	font-size: 48px;
 	font-family: Comic Sans MS, Comic Sans, cursive;
 	text-align: center;
 }
 
-container-fluid h2{
+ h2{
 	font-family: Comic Sans MS, Comic Sans, cursive;
 	font-size: 36px;
 }
 
-container-fluid #booki{
+ #booki{
 	height: 200px;
 	width: 300px;
 	float: left;
 }
 
-container-fluid #book_pic{
+ #book_pic{
 	width: 200px;
 	height: 300px;
 }
 
-/*#info{
+#info{
 	position: relative;
 	bottom: 300px;
 	left: 380px;
 	text-align: left;
 	width: 600px;
-}*/
+}
 
 #reviews{
 	position: relative;
