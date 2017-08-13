@@ -6,7 +6,6 @@ submit.onclick = function () {
       if (request.readyState === XMLHttpRequest.DONE) {
 		  console.log(request.status);
           if (request.status === 200) {
-			  alert('success');
 			  location.href = '/welcome';
 			}else if(request.status===403){
                 alert('Invalid username or password');

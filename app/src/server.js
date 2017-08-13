@@ -349,7 +349,7 @@ function createEditTemplate(data){
 				</div>
 			</div>
 		</body>
-		<script type="text/javascript" src="/js/write_review.js"></script>
+		<script type="text/javascript" src="/js/edit_review.js"></script>
 		<script>document.getElementById('rev').innerHTML = "${review}";</script>
 	</html>`
 
