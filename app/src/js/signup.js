@@ -25,7 +25,7 @@ submit.onclick = function () {
 	var emailcheck = false;
 	
 	function password_check(pass) { 
-		var re = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&<>^()])[A-Za-z\d$@$!%*#?&<>^()]{8,}$/;
+		var re = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&<>^\[\]()])[A-Za-z\d$@$!%*#?&<>^\[\]()]{8,}$/;
         return re.test(pass); 
 	}
 	

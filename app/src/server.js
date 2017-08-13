@@ -8,6 +8,7 @@ var root = process.cwd();
 var app = express();
 var id; 
 var auth;
+var book;
  
 //your routes here
 app.use("/css", express.static(__dirname + '/css'));
@@ -312,7 +313,7 @@ function createEditTemplate(data){
 				</div>
 				<div class="row">
 					<div class="col-sm-3">
-						<img id="book_pic" src="https://filestore.dejected61.hasura-app.io/v1/file/${bookpic}" / >
+						<img id="book_pic" src="https://filestore.dejected61.hasura-app.io/v1/file/${pic}" / >
 					</div>
 					<div class="col-sm-6">
 						<h2 value="${bookname}" id="bname">Title : <div class="green">${bookname}</div></h2>
@@ -502,7 +503,7 @@ app.get('/editreview/:bookname/:rid', function(req, res){
 		var query = {
 			"type": "select",
 			"args": {
-				"table": "book1",
+				"table": "rev_details",
 				"columns": ["book_id","book_pic","book_name","book_author","genre_name","review_content"],
 				"where": {"book_name" : req.params.bookname,"user_id": id}
 			}
@@ -518,6 +519,7 @@ app.get('/editreview/:bookname/:rid', function(req, res){
 			 body: query
 		}
 		request(options, function(error, response, body){
+			console.log(body);
 			 if(error){
 			   console.log(error);
 			   res.status(500).send("Error");

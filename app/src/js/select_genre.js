@@ -1,6 +1,8 @@
 var submit1 = document.getElementById('submitbtn');
 var submit2 = document.getElementById('submit_btn');
 
+alert("Select the box to the left of the picture");
+
 submit1.onclick = function () {
 	var request = new XMLHttpRequest(); 
 	 request.onreadystatechange = function(){ 

@@ -9,7 +9,7 @@ submit.onclick = function () {
 			  alert('success');
 			  location.href = '/welcome';
 			}else if(request.status===403){
-                alert('Unsuccessful. Re-try');
+                alert('Invalid username or password');
             }else if(request.status===500){
                 alert('Something wrong with the server');
             }else{
