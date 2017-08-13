@@ -7,6 +7,7 @@ function loadComments(iterator)
 	console.log(id);
 	var rid = document.getElementById(id).getAttribute('data-revvalue');
 	var comments = document.getElementById(id);
+	comments.innerHTML = '<center>Loading comments...<center>';
 	var request = new XMLHttpRequest();
     request.onreadystatechange = function () {
         if (request.readyState === XMLHttpRequest.DONE) {
@@ -70,9 +71,9 @@ function entercomment(iterator)
 	};
 	
 	var comment = document.getElementsByName('comment_text')[iterator].value;
-	request.open('POST', '/submit-comment/' + rid, true);
+	request.open('POST', '/submit-comment', true);
 	request.setRequestHeader('Content-Type', 'application/json');
-	request.send(JSON.stringify({comment: comment}));  
+	request.send(JSON.stringify({comment: comment,rid: rid}));  
 }
 
 function viewreplies(cid,iterator)
@@ -126,6 +127,8 @@ function writereply(cid,iterator){
 				if (request.status === 200) {
 					replyfield.innerHTML = ' ';
 					viewreplies(cid,iterator);
+				} else if(request.status==500){
+					alert('Server error');
 				} else {
 					alert('Error! Could not submit reply');
 				}
@@ -133,9 +136,9 @@ function writereply(cid,iterator){
 		};
 		
 		var reply = document.getElementById('reply_text').value;
-		request.open('POST', '/submit-reply/' + cid, true);
+		request.open('POST', '/submit-reply', true);
 		request.setRequestHeader('Content-Type', 'application/json');
-		request.send(JSON.stringify({reply: reply})); 
+		request.send(JSON.stringify({reply: reply,cid: cid})); 
 	};
 }
 

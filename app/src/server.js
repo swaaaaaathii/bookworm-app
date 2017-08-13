@@ -1,7 +1,6 @@
 var express = require('express');
 var path = require('path');
 var request = require('request');
-//var session = require('session');
 var bodyParser = require('body-parser');
 var config = require('./js/config.js');
 var admin = require('./js/admin.js');
@@ -45,8 +44,6 @@ app.post('/authenticate', function (req, res) {
 		 else if(body.hasura_id) {
 			id = body.hasura_id;
 		    config.TOKEN = body.auth_token;
-			console.log(id);
-			console.log(config.TOKEN);
 		    res.status(200).send("Successful");
 		 }
 		 else {
@@ -71,7 +68,6 @@ app.post('/register', function (req,res) {
 		 json: true,
 		 body: query
 	   }
-	   console.log(options);
 	request(options, function(error, response, body){
 		 if(error){
 		   console.log(error);
@@ -82,13 +78,10 @@ app.post('/register', function (req,res) {
 		   config.TOKEN = body.auth_token;
 		   res.status(200).send("Successful");
 		 }
-		 console.log(id);
-		 console.log(config.TOKEN);
 	});
 });
 
 app.post('/entername',function(req,res) {
-	console.log(req.body.name);
 	var query = {
 		"type": "insert",
 		"args": {
@@ -108,7 +101,6 @@ app.post('/entername',function(req,res) {
 			},
 		 body: query
 	 }
-	 console.log(options);
 	 request(options, function(error, response, body){
 		 if(error){
 		   console.log(error);
@@ -121,7 +113,6 @@ app.post('/entername',function(req,res) {
 });
 
 app.post('/entergenre',function(req,res) { 
-	console.log(id);
 	var query = {
 		"type": "insert",
 		"args": {
@@ -249,7 +240,7 @@ function createWelcomeTemplate(data) {
 				</div>
 				<div class="row">
 					<div class="col-sm-3">
-						<img id="book_pic" src="https://filestore.dejected61.hasura-app.io/v1/file/${bookpic}" / >
+						<img id="book_pic" src="https://filestore.dejected61.hasura-app.io/v1/file/${pic}" / >
 					</div>
 					<div class="col-sm-6">
 						<h2 value="${bookname}" id="bname">Title : <div class="green">${bookname}</div></h2>
@@ -409,17 +400,19 @@ function createViewTemplate(data)
 			<body>
 			<div class="container-fluid">
 				<div class="row">
+					<div class="col-sm-1"></div>
 					<div class="col-sm-2"><img id="book_pic" src="https://filestore.dejected61.hasura-app.io/v1/file/${pic}" / ></div>
-					<div class="col-sm-8" id="info">
+					<div class="col-sm-5" id="info">
 						<h1>${title}</h1>
 						<h2>Author : <div class="green">${author}</div></h2>
 						<h2>Genre : <div class="green">${genre}</div></h2>
 						<h2>Reviews : <div class="green">${revcount}</div></h2>
 						<div align="center">${buttontext}</div>
 					</div>
-					<div class="col-sm-2">
+					<div class="col-sm-3">
 						<a href = "/welcome"><img id="booki" src="http://images.clipartpanda.com/book-worm-clip-art-RTdRnoXxc.png"/></a>
 					</div>
+					<div class="col-sm-1"></div>
 				</div>
 				<div id = "reviews">
 				</div>
@@ -435,7 +428,6 @@ function createViewTemplate(data)
 }
 
 app.get('/welcome', function(req, res){
-	console.log("In server");
 	if(admin.getToken()) {
 		var query = {
 			"type": "select",
@@ -460,7 +452,6 @@ app.get('/welcome', function(req, res){
 			   res.status(500).send("Error");
 			 }
 			 else {
-					console.log(body);
 					res.send(createWelcomeTemplate(body));
 			 }
 		});
@@ -791,7 +782,7 @@ app.post('/deletereview',function(req,res) {
 	}
 });
 
-app.post('/submit-comment/:rid',function(req,res) { 
+app.post('/submit-comment',function(req,res) { 
 	if(admin.getToken()) {
 		 var query = { 
 			"type": "insert",
@@ -800,7 +791,7 @@ app.post('/submit-comment/:rid',function(req,res) {
 				"objects": [{
 					"comment_content":req.body.comment,
 					"user_id" : id,
-					"review_id": req.params.rid
+					"review_id": req.body.rid
 				}]
 			}
 		}
@@ -828,7 +819,7 @@ app.post('/submit-comment/:rid',function(req,res) {
 	}
 });
 
-app.post('/submit-reply/:cid',function(req,res) { 
+app.post('/submit-reply',function(req,res) { 
 	if(admin.getToken()) {
 		 var query = { 
 			"type": "insert",
@@ -837,7 +828,7 @@ app.post('/submit-reply/:cid',function(req,res) {
 				"objects": [{
 					"reply_content":req.body.reply,
 					"user_id" : id,
-					"comment_id": req.params.cid
+					"comment_id": req.body.cid
 				}]
 			}
 		}
@@ -856,7 +847,7 @@ app.post('/submit-reply/:cid',function(req,res) {
 			   res.status(500).send("Error");
 			 }
 			 else {
-			   res.status(response.STATUS).send("Successful");
+			   res.status(200).send("Successful");
 			 }
 		 });
 	}

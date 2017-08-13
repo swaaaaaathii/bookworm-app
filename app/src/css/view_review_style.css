@@ -1,39 +1,42 @@
-container-fluid .green{
+.green{
 	color: #174E08;
 	display: inline;
 }
 
-container-fluid h1{
+body{
+	font-family: Comic Sans MS, Comic Sans, cursive;
+}
+
+h1{
 	font-size: 48px;
 	font-family: Comic Sans MS, Comic Sans, cursive;
 	text-align: center;
 }
 
-container-fluid h2{
+h2{
 	font-family: Comic Sans MS, Comic Sans, cursive;
 	font-size: 36px;
 }
 
-container-fluid #booki{
+#booki{
+	margin-top:10px;
 	height: 200px;
 	width: 300px;
-	float: left;
 }
 
-container-fluid #book_pic{
+#book_pic{
+	margin-top:10px;
 	width: 200px;
 	height: 300px;
 }
 
-container-fluid #info{
-	text-align: left;
-	width: 600px;
+#info{
+	font-family: Comic Sans MS, Comic Sans, cursive;
+	text-align: center;
 }
 
 #reviews{
-	position: relative;
-	bottom: 280px;
-	left: 50px;
+	margin-left: 10%;
 }
 
 h3{
@@ -61,8 +64,6 @@ p{
 }
 
 .stars{
-	position: relative;
-	top: 15px;
 	width: 200px;
 	height: 46px;
 }
@@ -78,11 +79,7 @@ textarea{
 	margin-left: 120px;
 }
 
-.write{
-	font-size: 18px;
-	font-family: Comic Sans MS, Comic Sans, cursive;
-	margin-left: 120px;
-}
+
 
 hr{
     border: none;
@@ -93,8 +90,6 @@ hr{
 }
 
 #writereview{
-	position: relative;
-	left: 200px;
 	height: 60px;
 	font-size: 30px;
 	color: white;
