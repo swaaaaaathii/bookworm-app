@@ -7,12 +7,11 @@ submit.onclick = function () {
 			if(request.status === 200||request.status === 304){
 				location.href='html/select_genre.html';
 			}
-			else if(request.status === 403){
-				alert("Unsuccessful. Try logging in again");
-				location.href='/login';
-			}
 			else if(request.status === 500)
 				alert("Server Error");
+			else {
+				alert("Could not sign up. Try again");
+			}
 		}
 	 }
 	var username = document.getElementById('user').value;

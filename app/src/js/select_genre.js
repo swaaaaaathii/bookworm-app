@@ -1,5 +1,6 @@
 var submit1 = document.getElementById('submitbtn');
 var submit2 = document.getElementById('submit_btn');
+var flag=0;
 
 alert("Select the box to the left of the picture");
 
@@ -8,6 +9,7 @@ submit1.onclick = function () {
 	 request.onreadystatechange = function(){ 
 		if(request.readyState = XMLHttpRequest.DONE){ 
 			if(request.status === 200){
+				flag = 1;
 				document.getElementById("namediv").innerHTML="<h1>Select your favourite Genres : </h1>";
 			}
 			else if(request.status === 403) { 
@@ -49,6 +51,9 @@ submit2.onclick = function () {
 	 }
 	 var sg,genre_id;
 	 var i;
+	 if(flag==0)
+		 alert("Please enter a name and submit first");
+	 
 	 for(i=0;i<12;i++) { 
 		genre_id = document.getElementsByName("c1")[i].value;
 		sg = document.getElementsByName("c1")[i].checked;
