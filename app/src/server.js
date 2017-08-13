@@ -45,6 +45,8 @@ app.post('/authenticate', function (req, res) {
 		 else if(body.hasura_id) {
 			id = body.hasura_id;
 		    config.TOKEN = body.auth_token;
+			console.log(id);
+			console.log(config.TOKEN);
 		    res.status(200).send("Successful");
 		 }
 		 else {
