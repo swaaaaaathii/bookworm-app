@@ -415,9 +415,9 @@ function createViewTemplate(data)
 						<h2>Author : <div class="green">${author}</div></h2>
 						<h2>Genre : <div class="green">${genre}</div></h2>
 						<h2>Reviews : <div class="green">${revcount}</div></h2>
-						${buttontext}
+						<div align="center">${buttontext}</div>
 					</div>
-					<div class=""col-sm-8>
+					<div class="col-sm-2">
 						<a href = "/welcome"><img id="booki" src="http://images.clipartpanda.com/book-worm-clip-art-RTdRnoXxc.png"/></a>
 					</div>
 				</div>
