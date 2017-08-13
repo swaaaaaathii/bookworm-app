@@ -1,6 +1,7 @@
 var express = require('express');
 var path = require('path');
 var request = require('request');
+var session = require('session');
 var bodyParser = require('body-parser');
 var config = require('./js/config.js');
 var admin = require('./js/admin.js');
@@ -8,7 +9,6 @@ var root = process.cwd();
 var app = express();
 var id; 
 var auth;
-var book;
  
 //your routes here
 app.use("/css", express.static(__dirname + '/css'));
@@ -32,7 +32,7 @@ app.post('/authenticate', function (req, res) {
        };
 	var options = {
          method: "POST",
-         url: 'http://auth.' + config.DOMAIN + '/login',
+         url: 'https://auth.' + config.DOMAIN + '/login',
          json: true,
          body: query
        }
@@ -65,7 +65,7 @@ app.post('/register', function (req,res) {
 	   }
 	var options = {
 		 method: "POST",
-		 url: 'http://auth.' + config.DOMAIN + '/signup',
+		 url: 'https://auth.' + config.DOMAIN + '/signup',
 		 json: true,
 		 body: query
 	   }
@@ -99,7 +99,7 @@ app.post('/entername',function(req,res) {
 	}
 	var options = {
 		 method: 'POST',
-		 url: 'http://data.' + config.DOMAIN + '/v1/query',
+		 url: 'https://data.' + config.DOMAIN + '/v1/query',
 		 json: true,
 		 headers : {
 			 'Authorization': 'Bearer ' + admin.getToken()
@@ -132,7 +132,7 @@ app.post('/entergenre',function(req,res) {
 	}
 	var options = {
 		 method: 'POST',
-		 url: 'http://data.' + config.DOMAIN + '/v1/query',
+		 url: 'https://data.' + config.DOMAIN + '/v1/query',
 		 json: true,
 		 headers : {
 			 'Authorization': 'Bearer ' + admin.getToken()
@@ -438,7 +438,7 @@ app.get('/welcome', function(req, res){
 		}
 		var options = {
 			 method: 'POST',
-			 url: 'http://data.' + config.DOMAIN + '/v1/query',
+			 url: 'https://data.' + config.DOMAIN + '/v1/query',
 			 json: true,
 			 headers : {
 				 'Authorization': 'Bearer ' + admin.getToken()
@@ -474,7 +474,7 @@ app.get('/writereview/:bookname', function(req, res){
 		
 		var options = {
 			 method: 'POST',
-			 url: 'http://data.' + config.DOMAIN + '/v1/query',
+			 url: 'https://data.' + config.DOMAIN + '/v1/query',
 			 json: true,
 			 headers : {
 				 'Authorization': 'Bearer ' + admin.getToken()
@@ -510,7 +510,7 @@ app.get('/editreview/:bookname/:rid', function(req, res){
 		
 		var options = {
 			 method: 'POST',
-			 url: 'http://data.' + config.DOMAIN + '/v1/query',
+			 url: 'https://data.' + config.DOMAIN + '/v1/query',
 			 json: true,
 			 headers : {
 				 'Authorization': 'Bearer ' + admin.getToken()
@@ -545,7 +545,7 @@ app.get('/review/:bookname', function(req,res){
 		}
 		var options = {
 			 method: 'POST',
-			 url: 'http://data.' + config.DOMAIN + '/v1/query',
+			 url: 'https://data.' + config.DOMAIN + '/v1/query',
 			 json: true,
 			 headers : {
 				 'Authorization': 'Bearer ' + admin.getToken()
@@ -582,7 +582,7 @@ app.get('/getcomments/:rid', function(req,res){
 		}
 		var options = {
 			 method: 'POST',
-			 url: 'http://data.' + config.DOMAIN + '/v1/query',
+			 url: 'https://data.' + config.DOMAIN + '/v1/query',
 			 json: true,
 			 headers : {
 				 'Authorization': 'Bearer ' + admin.getToken()
@@ -617,7 +617,7 @@ app.get('/getlength/:bookname', function(req,res){
 		}
 		var options = {
 			 method: 'POST',
-			 url: 'http://data.' + config.DOMAIN + '/v1/query',
+			 url: 'https://data.' + config.DOMAIN + '/v1/query',
 			 json: true,
 			 headers : {
 				 'Authorization': 'Bearer ' + admin.getToken()
@@ -651,7 +651,7 @@ app.get('/getreplies/:cid', function(req,res){
 		}
 		var options = {
 			 method: 'POST',
-			 url: 'http://data.' + config.DOMAIN + '/v1/query',
+			 url: 'https://data.' + config.DOMAIN + '/v1/query',
 			 json: true,
 			 headers : {
 				 'Authorization': 'Bearer ' + admin.getToken()
@@ -690,7 +690,7 @@ app.post('/insertreview',function(req,res) {
 		}
 		var options = {
 			 method: 'POST',
-			 url: 'http://data.' + config.DOMAIN + '/v1/query',
+			 url: 'https://data.' + config.DOMAIN + '/v1/query',
 			 json: true,
 			 headers : {
 				 'Authorization': 'Bearer ' + admin.getToken()
@@ -727,7 +727,7 @@ app.post('/updatereview',function(req,res) {
 		}
 		var options = {
 			 method: 'POST',
-			 url: 'http://data.' + config.DOMAIN + '/v1/query',
+			 url: 'https://data.' + config.DOMAIN + '/v1/query',
 			 json: true,
 			 headers : {
 				 'Authorization': 'Bearer ' + admin.getToken()
@@ -760,7 +760,7 @@ app.post('/deletereview',function(req,res) {
 		}
 		var options = {
 			 method: 'POST',
-			 url: 'http://data.' + config.DOMAIN + '/v1/query',
+			 url: 'https://data.' + config.DOMAIN + '/v1/query',
 			 json: true,
 			 headers : {
 				 'Authorization': 'Bearer ' + admin.getToken()
@@ -797,7 +797,7 @@ app.post('/submit-comment/:rid',function(req,res) {
 		}
 		var options = {
 			 method: 'POST',
-			 url: 'http://data.' + config.DOMAIN + '/v1/query',
+			 url: 'https://data.' + config.DOMAIN + '/v1/query',
 			 json: true,
 			 headers : {
 				 'Authorization': 'Bearer ' + admin.getToken()
