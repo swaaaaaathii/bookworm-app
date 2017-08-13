@@ -404,18 +404,25 @@ function createViewTemplate(data)
 				<meta name="viewport" content="width=device-width, initial-scale=1">
 				<title>Reviews</title>
 				<link rel="stylesheet" type="text/css" href="/css/view_review_style.css"/>
+				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 			</head>
 			<body>
-			<a href = "/welcome"><img id="booki" src="http://images.clipartpanda.com/book-worm-clip-art-RTdRnoXxc.png"/></a>
-			<img id="book_pic" src="https://filestore.dejected61.hasura-app.io/v1/file/${pic}" / >
-			<div id="info">
-			<h1>${title}</h1>
-			<h2>Author : <div class="green">${author}</div></h2>
-			<h2>Genre : <div class="green">${genre}</div></h2>
-			<h2>Reviews : <div class="green">${revcount}</div></h2>
-			${buttontext}
-			</div>
-			<div id = "reviews">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-sm-2"><img id="book_pic" src="https://filestore.dejected61.hasura-app.io/v1/file/${pic}" / ></div>
+					<div class="col-sm-8" id="info">
+						<h1>${title}</h1>
+						<h2>Author : <div class="green">${author}</div></h2>
+						<h2>Genre : <div class="green">${genre}</div></h2>
+						<h2>Reviews : <div class="green">${revcount}</div></h2>
+						${buttontext}
+					</div>
+					<div class=""col-sm-8>
+						<a href = "/welcome"><img id="booki" src="http://images.clipartpanda.com/book-worm-clip-art-RTdRnoXxc.png"/></a>
+					</div>
+				</div>
+				<div id = "reviews">
+				</div>
 			</div>
 			</body>
 			<script>
