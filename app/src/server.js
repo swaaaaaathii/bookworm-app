@@ -7,12 +7,10 @@ var admin = require('./js/admin.js');
 var root = process.cwd();
 var app = express();
 var session = require('express-session');
-//var id; 
-//var auth;
 var book;
 
 app.use(session({
-    secret: 'teddy-boo',
+    secret: 'some string',
     cookie: { maxAge: 1000 * 60 * 60 * 24 * 30}
 }));
  
