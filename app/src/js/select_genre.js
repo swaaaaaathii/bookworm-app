@@ -2,7 +2,7 @@ var submit1 = document.getElementById('submitbtn');
 var submit2 = document.getElementById('submit_btn');
 var flag=0;
 
-alert("Select the box to the left of the picture");
+alert("Check the box to the left of the picture you want to choose");
 
 submit1.onclick = function () {
 	var request = new XMLHttpRequest(); 
