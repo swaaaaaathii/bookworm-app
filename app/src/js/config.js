@@ -3,7 +3,7 @@ var config = {
     database: 'hasuradb',
     host: 'postgres.hasura',
     port: '5432',
-    password: 'thought-amorous-putdown-wiesel'
+    password: ''
 };
 
 config.DOMAIN = 'dejected61.hasura-app.io';
