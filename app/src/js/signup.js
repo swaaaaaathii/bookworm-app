@@ -34,8 +34,8 @@ submit.onclick = function () {
 	}	
 	if(username=="")
 		alert("Username cannot be empty !");
-	 else if(ulength > 0 && ulength < 3)
-		alert("Username must have atleast 3 characters.");
+	 else if(ulength > 0 && ulength < 4)
+		alert("Username must have atleast 4 characters.");
 	else
 		usercheck = true;
 	
