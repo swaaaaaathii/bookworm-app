@@ -34,7 +34,7 @@ function loadComments(iterator)
             }
 		}
 	}
-	request.open('GET', '/getcomments/' + rid ,true);
+	request.open('GET', '/getcomments/'+rid ,true);
     request.send(null);
 }
 
