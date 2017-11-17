@@ -6,9 +6,15 @@ var config = require('./js/config.js');
 var admin = require('./js/admin.js');
 var root = process.cwd();
 var app = express();
-var id; 
-var auth;
+var session = require('express-session');
+//var id; 
+//var auth;
 var book;
+
+app.use(session({
+    secret: 'teddy-boo',
+    cookie: { maxAge: 1000 * 60 * 60 * 24 * 30}
+}));
  
 //your routes here
 app.use("/css", express.static(__dirname + '/css'));
@@ -43,7 +49,7 @@ app.post('/authenticate', function (req, res) {
            res.status(500).send("Error");
 		 }
 		 else if(body.hasura_id) {
-			id = body.hasura_id;
+			req.session.auth.id = body.hasura_id;
 		    config.TOKEN = body.auth_token;
 		    res.status(200).send("Successful");
 		 }
@@ -75,7 +81,7 @@ app.post('/register', function (req,res) {
 		   res.status(500).send("Error");
 		 }
 		 else {
-		   id = body.hasura_id;
+		   req.session.auth.id = body.hasura_id;
 		   config.TOKEN = body.auth_token;
 		   res.status(200).send("Successful");
 		 }
@@ -88,7 +94,7 @@ app.post('/entername',function(req,res) {
 		"args": {
 			"table": "user_details",
 			"objects": [{
-				"user_id": id,
+				"user_id": req.session.auth.id,
 				"user_name": req.body.name
 			}]
 		}
@@ -119,7 +125,7 @@ app.post('/entergenre',function(req,res) {
 		"args": {
 			"table": "user-genre",
 			"objects": [{
-				"user_id":id,
+				"user_id":req.session.auth.id,
 				"genre_id": req.body.genre_id
 			}]
 		}
@@ -145,7 +151,7 @@ app.post('/entergenre',function(req,res) {
 });
 
 app.get('/logout', function (req, res) {
-   id = 0;
+   delete req.session.auth;
    config.TOKEN = undefined;
    res.status(200).send("Successful");
 });
@@ -505,7 +511,7 @@ app.get('/editreview/:bookname/:rid', function(req, res){
 			"args": {
 				"table": "rev_details",
 				"columns": ["book_id","book_pic","book_name","book_author","genre_name","review_content"],
-				"where": {"book_name" : req.params.bookname,"user_id": id}
+				"where": {"book_name" : req.params.bookname,"user_id": req.session.auth.id}
 			}
 		}
 		
@@ -685,7 +691,7 @@ app.post('/insertreview',function(req,res) {
 				"objects": [{
 					"review_content":req.body.review,
 					"rating": req.body.rating,
-					"user_id" : id,
+					"user_id" : req.session.auth.id,
 					"book_id": book
 				}]
 			}
@@ -792,7 +798,7 @@ app.post('/submit-comment',function(req,res) {
 				"table": "comment",
 				"objects": [{
 					"comment_content":req.body.comment,
-					"user_id" : id,
+					"user_id" : req.session.auth.id,
 					"review_id": req.body.rid
 				}]
 			}
@@ -829,7 +835,7 @@ app.post('/submit-reply',function(req,res) {
 				"table": "reply",
 				"objects": [{
 					"reply_content":req.body.reply,
-					"user_id" : id,
+					"user_id" : req.session.auth.id,
 					"comment_id": req.body.cid
 				}]
 			}
